@@ -1,0 +1,23 @@
+//use to traverse or manipulate collection of objects.
+// iterator pattern must have two method next() and hasNext().
+//next return next of the current index.
+// hasNext return true/false -> if index have next element=> true, else => false 
+
+
+const items = [1, "coditas", false, 1.33];
+function iterator(items) {
+  this.items = items;
+  this.index = 0;
+}
+iterator.prototype = {
+  hasNext: function () {
+    return this.index < this.items.length;
+  },
+  next: function () {
+    return this.items[this.index++];
+  },
+};
+const iter = new iterator(items);
+while (iter.hasNext()) {
+  console.log(iter.next());
+}
